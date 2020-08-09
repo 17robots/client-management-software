@@ -27,6 +27,7 @@ Project
     Cancelled?: Boolean
 
 Milestone
+    Created Date: Date
     Due Date: Date
     Description/What was achieved: String
     Current Payment (Optional): Double
@@ -40,7 +41,7 @@ Event
     Project: Project!
     Hours: Double
 
-Account
+User
     Name: String!
     Username: String!
     Email: String
@@ -94,3 +95,21 @@ Mutation
 
 
 DB
+
+Teams
+    Permissions
+        - Add/Close Project - covered
+        - Edit Project - covered
+        - Create/Delete Milestone - covered
+        - Edit Milestone - covered
+        - Assign/Unassign User - covered
+        - Edit Team
+        - Add Users - covered 
+        - Remove Users - covered
+        - Assign Role - covered
+        - Remove Role - covered
+
+
+Personal Calendar
+
+Team Calendar
