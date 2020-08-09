@@ -1,0 +1,96 @@
+Main Features
+
+Objects
+
+Client
+    Name: String!
+    Address: String
+    Phone: String
+    Email: String!
+    Payment Information: String
+    Additional Notes: String
+    Hidden?: Boolean
+
+Project
+    User: User!
+    Title: String!
+    Description: String
+    Client: Client!
+    Due Date: Date
+    Milestones: [Milestone]
+    Additional Notes: String!
+    Payment Type - rate based/fixed total: String!
+    Total: Double
+    Rate: Double
+    Estimated Hours: Double
+    Paid?: Boolean
+    Cancelled?: Boolean
+
+Milestone
+    Due Date: Date
+    Description/What was achieved: String
+    Current Payment (Optional): Double
+    Hourlty?: Boolean
+    Project: Project!
+
+Event
+    Title: String!
+    Notes: String
+    Milestone?: [Milestone]
+    Project: Project!
+    Hours: Double
+
+Account
+    Name: String!
+    Username: String!
+    Email: String
+    Password: String!
+    Clients: [Clients]
+
+API Features
+    Login
+    Logout
+    Add Client
+    Edit Client
+    Hide Client
+    Show Hidden Client
+    Add Project
+    Cancel Project
+    Add Milestone to Project
+    Add Event To Project
+    Reactivate Project
+    Mark Paid
+    Mark Unpaid
+    Get Clients
+    Get Projects
+    Get Events
+    Get Milestones
+    Create Account
+    Edit Account
+
+API
+
+Query
+    Login
+    Projects
+    Events
+    Milestones
+    Clients
+    Events
+
+Mutation
+    CreateClient
+    EditClient
+    CreateProject
+    EditProject
+    CreateEvent
+    EditEvent
+    RemoveEvent
+    CreateMilestone
+    EditMilestone
+    RemoveMilestone
+    CreateAccount
+    EditAccount
+
+
+DB
