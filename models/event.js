@@ -12,7 +12,7 @@ const eventSchema = new Schema({
         required: false
     },
     milestone: {
-        type: SchemaObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Milestone',
         required: false
     },
@@ -22,7 +22,7 @@ const eventSchema = new Schema({
         required: true
     },
     hours: {
-        type: Double,
+        type: Number,
         required: true
     },
     creator: {
