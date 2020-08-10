@@ -25,22 +25,21 @@ module.exports = buildSchema(`
 
     type Milestone {
         _id: ID!
-        createdAt: String!
-        dueDate: String
+        title: String!
         description: String
         project: Project!
         milestonePayment: Float
         paid: Boolean
         creator: User!
+        createdAt: String!
+        dueDate: String
     }
 
     type Project {
         _id: ID!
-        creator: User!
         title: String!
         description: String
         client: Client!
-        dueDate: String
         milestones: [Milestone!]
         additionalNotes: String
         paymentType: String!
@@ -52,6 +51,9 @@ module.exports = buildSchema(`
         sharedUsers: [User!]
         assignedUsers: [User!]
         team: Team
+        creator: User!
+        createdDate: String!
+        dueDate: String
     }
 
     type Role {
@@ -99,6 +101,72 @@ module.exports = buildSchema(`
         tokenExpiration: Int!
     }
 
+    input ClientInput {
+        name: String!
+        address: String
+        phone: String
+        email: String
+        paymentInfo: String
+        additionalNotes: String
+    }
+
+    input EventInput {
+        title: String!
+        note: String
+        projectId: ID!
+        hours: Float!
+        creatorId: ID!
+    }
+
+    input MilestoneInput {
+        title: String!
+        description: String
+        projectId: ID!
+        milestonePayment: Float
+        paid: Boolean
+        creatorId: ID!
+        createdAt: String!
+        dueDate: String
+    }
+
+    input ProjectInput {
+        title: String!
+        description: String
+        clientId: ID!
+        additionalNotes: String
+        paymentType: String!
+        total: Float
+        rate: Float
+        estimatedHours: Float
+        teamId: ID
+        creatorId: ID!
+        createdDate: String!
+        dueDate: String
+    }
+
+    input RoleInput {
+        name: String!
+        priority: Int!
+        addUser: Boolean!
+        removeUser: Boolean!
+        assignRole: Boolean!
+        removeRole: Boolean!
+        addProject: Boolean!
+        closeProject: Boolean!
+        editProject: Boolean!
+        addMilestone: Boolean!
+        deleteMilestone: Boolean!
+        editMilestone: Boolean!
+        assignUser: Boolean!
+        unassignUser: Boolean!
+        editTeam: Boolean!
+    }
+
+    input TeamInput {
+        creatorId: ID!
+        title: String!
+    }
+
     input UserInput {
         username: String!
         name: String!
@@ -117,6 +185,12 @@ module.exports = buildSchema(`
     }
 
     type RootMutation {
+        createClient(clientInput: ClientInput): Client
+        createEvent(eventInput: EventInput): Event
+        createMilestone(milestoneInput: MilestoneInput): Milestone
+        createProject(projectInput: ProjectInput): Project
+        createRole(roleInput: RoleInput): Role
+        createTeam(teamInput: TeamInput): Team
         createUser(userInput: UserInput): User
     }
 

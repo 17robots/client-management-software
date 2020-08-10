@@ -3,10 +3,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const projectSchema = new Schema({
-    creator: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
     title: {
         type: String,
         required: true
@@ -19,10 +15,6 @@ const projectSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Client',
         required: true
-    },
-    dueDate: {
-        type: Date,
-        required: false
     },
     milestones: [
         {
@@ -73,6 +65,18 @@ const projectSchema = new Schema({
     team: {
         type: Schema.Types.ObjectId,
         ref: 'Team'
+    },
+    creator: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    createdAt: {
+        type: Date,
+        required: true
+    },
+    dueDate: {
+        type: Date,
+        required: false
     }
 })
 

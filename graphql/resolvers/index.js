@@ -1,9 +1,9 @@
 const authResolver = require('./auth')
-const clientResolver = require('./clients')
-const eventResolver = require('./events')
-const projectResolver = require('./projects')
-const roleResolver = require('./roles')
-const teamResolver = require('./teams')
+const clientResolver = require('./client')
+const eventResolver = require('./event')
+const projectResolver = require('./project')
+const roleResolver = require('./role')
+const teamResolver = require('./team')
 
 module.exports = {
     ...authResolver,

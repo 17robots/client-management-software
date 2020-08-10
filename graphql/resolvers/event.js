@@ -1,15 +1,18 @@
 const Event = require('../../models/event')
+const { transformEvent } = require('./merge')
 
 module.exports = {
-    events: async(args, req) => {
+    events: async (args, req) => {
         try {
             const events = await Event.find()
             return events.map(event => {
-                console.log(event._doc)
-                return event._doc
+                transformEvent(event)
             })
-        } catch(err) {
+        } catch (err) {
             throw err
         }
+    },
+    createEvent: async args => {
+
     }
 }

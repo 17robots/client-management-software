@@ -5,13 +5,13 @@ const User = require('../../models/user')
 module.exports = {
     createUser: async args => {
         try {
-            let userResponse = await User.findOne({email: args.userInput.email})
-            if(userResponse) {
+            let userResponse = await User.findOne({ email: args.userInput.email })
+            if (userResponse) {
                 throw new Error("Email Already In Use")
             }
 
-            userResponse = await User.findOne({username: args.userInput.username})
-            if(userResponse) {
+            userResponse = await User.findOne({ username: args.userInput.username })
+            if (userResponse) {
                 throw new Error("Username Already In Use")
             }
 
@@ -29,7 +29,7 @@ module.exports = {
                 password: null,
                 _id: result.id
             }
-        } catch(err) {
+        } catch (err) {
             throw err
         }
     }

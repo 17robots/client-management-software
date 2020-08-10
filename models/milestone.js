@@ -3,13 +3,9 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const milestoneSchema = new Schema({
-    createdDate: {
-        type: Date,
+    title: {
+        type: String,
         required: true
-    },
-    dueDate: {
-        type: Date,
-        required: false
     },
     description: {
         type: String,
@@ -31,7 +27,15 @@ const milestoneSchema = new Schema({
     creator: {
         type: Schema.Types.ObjectId,
         required: true
-    }
+    },
+    createdDate: {
+        type: Date,
+        required: true
+    },
+    dueDate: {
+        type: Date,
+        required: false
+    },
 })
 
 module.exports = mongoose.model('Milestone', milestoneSchema)
