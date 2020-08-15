@@ -46,7 +46,7 @@ module.exports = buildSchema(`
         paymentType: String!
         dueDate: String
         sharedUsers: [User!]
-        closed: Boolean
+        closed: Boolean!
     }
 
     type Milestone {
@@ -70,7 +70,7 @@ module.exports = buildSchema(`
 
     type Event {
         _id: ID!
-        createdDate: String!
+        createdAt: String!
         creator: User!
         task: Task!
         finishedDate: String!
@@ -90,7 +90,7 @@ module.exports = buildSchema(`
 
     type Role {
         _id: ID!
-        createdDate: String!
+        createdAt: String!
         creator: User!
         team: Team!
         name: String!
@@ -99,7 +99,7 @@ module.exports = buildSchema(`
 
     type User {
         _id: ID!
-        createdDate: String!
+        createdAt: String!
         firstName: String!
         lastName: String
         username: String!
