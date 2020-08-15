@@ -41,7 +41,16 @@ const clients = async clientIds => {
 
 const transformClient = client => {
     return {
-
+        ...client._doc,
+        _id: client.id,
+        createdAt: dateToString(client._doc.createdAt),
+        creator: user.bind(this, client.creator),
+        name: client.name,
+        team: team.bind(this, client.team),
+        address: client.address,
+        clientPhone: phone.bind(this, client.clientPhone),
+        mainContact: contact.bind(this, client.mainContact),
+        otherContacts: () => contactLoader.loadMany(client._doc.otherContacts)
     }
 }
 
@@ -62,7 +71,14 @@ const contacts = async contactIds => {
 
 const transformContact = contact => {
     return {
-
+        ...contact._doc,
+        _id: contact.id,
+        createdAt: dateToString(contact._doc.createdAt),
+        creator: user.bind(this, contact.creator),
+        firstName: contact.firstName,
+        lastName: contact.lastName,
+        email: contact.email,
+        phoneNumbers: () => phoneLoader.loadMany(contact._doc.phoneNumbers)
     }
 }
 
@@ -83,7 +99,15 @@ const events = async eventIds => {
 
 const transformEvent = event => {
     return {
-
+        ...event._doc,
+        _id: event.id,
+        createdAt: dateToString(event._doc.createdAt),
+        creator: user.bind(this, event.creator),
+        task: task.bind(this, event.task),
+        finishedDate: dateToString(event._doc.finishedDate),
+        summary: event.summary,
+        notes: event.notes,
+        overrideHours: event.overrideHours
     }
 }
 
@@ -104,7 +128,12 @@ const milestones = async milestoneIds => {
 
 const transformMilestone = milestone => {
     return {
-
+        ...milestone._doc,
+        _id: milestone.id,
+        createdAt: dateToString(milestone._doc.createdAt),
+        creator: user.bind(this, milestone.creator),
+        project: project.bind(this, milestone.project),
+        name: milestone.name
     }
 }
 
@@ -124,7 +153,11 @@ const phones = async phoneIds => {
 
 const transformPhone = phone => {
     return {
-
+        ...phone._doc,
+        _id: phone.id,
+        creator: user.bind(this, phone.creator),
+        type: phone.type,
+        number: phone.number
     }
 }
 
@@ -145,7 +178,21 @@ const projects = async projectsIds => {
 
 const transformProject = project => {
     return {
-
+        ...project.id,
+        _id: project.id,
+        createdAt: dateToString(project._doc.createdAt),
+        creator: user.bind(this, project.creator),
+        client: client.bind(this, project.client),
+        team: team.bind(this, project.team),
+        name: project.name,
+        description: project.description,
+        estimatedHours: project.estimatedHours,
+        total: project.total,
+        rate: project.rate,
+        paymentType: project.paymentType,
+        dueDate: dateToString(project._doc.dueDate),
+        sharedUsers: () => userLoader.loadMany(project._doc.sharedUsers),
+        active: project.active
     }
 }
 
@@ -187,7 +234,15 @@ const tasks = async taskIds => {
 
 const transformTask = task => {
     return {
-
+        ...task._doc,
+        _id: task.id,
+        createdAt: dateToString(task._doc.createdAt),
+        creator: user.bind(this, task.creator),
+        project: project.bind(this, task.project),
+        title: task.title,
+        milestone: milestone.bind(this, task.milestone),
+        description: task.description,
+        completed: task.completed
     }
 }
 
@@ -210,7 +265,13 @@ const teams = async teamIds => {
 
 const transformTeam = team => {
     return {
-
+        ...team._doc,
+        _id: team.id,
+        createdAt: dateToString(team._doc.createdAt),
+        creator: user.bind(this, team.creator),
+        name: team.name,
+        bannerImg: team.bannerImg,
+        users: () => userLoader.loadMany(team._doc.users)
     }
 }
 
@@ -231,7 +292,14 @@ const users = async userIds => {
 
 const transformUser = user => {
     return {
-
+        ...user._doc,
+        _id: user.id,
+        createdAt: dateToString(user._doc.createdAt),
+        creator: user.bind(this, user.creator),
+        firstName: user.firstName,
+        lastName: user.lastName,
+        username: user.username,
+        email: user.email
     }
 }
 

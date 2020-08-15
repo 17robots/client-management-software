@@ -22,7 +22,13 @@ const roleSchema = new Schema({
     color: {
         type: String,
         required: true
-    }
+    },
+    permissions: [
+        {
+            type: String,
+            required: true
+        }
+    ]
 })
 
 module.exports = mongoose.model('Role', roleSchema)

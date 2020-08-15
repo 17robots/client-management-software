@@ -95,6 +95,7 @@ module.exports = buildSchema(`
         team: Team!
         name: String!
         color: String!
+        permissions: [String!]
     }
 
     type User {
@@ -114,17 +115,15 @@ module.exports = buildSchema(`
     }
 
     type RootQuery {
-        loginEmail(email: String!, password: String!): AuthData
-        loginUser(username: String!, password: String!): AuthData
-        teams: [Team!]
-        projects: [Project!]
         clients: [Client!]
         contacts: [Contact!]
-        milestones: [Milestone!]
         events: [Event!]
+        milestones: [Milestone!]
         phones: [Phone!]
-        tasks: [Task!]
+        projects: [Project!]
         roles: [Role!]
+        tasks: [Task!]
+        teams: [Team!]
         users: [User!]
     }
 
