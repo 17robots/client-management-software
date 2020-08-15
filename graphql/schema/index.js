@@ -13,6 +13,10 @@ module.exports = buildSchema(`
         active: Boolean
     }
 
+    interface Content {
+        name: String!
+    }
+
     type Event {
         _id: ID!
         title: String!
@@ -20,7 +24,14 @@ module.exports = buildSchema(`
         milestone: Milestone
         project: Project!
         hours: Float!
+        content: [Content!]
         creator: User!
+    }
+
+    type List implements Content {
+        _id: ID!
+        name: String!
+        items: [String!]
     }
 
     type Milestone {
@@ -33,6 +44,11 @@ module.exports = buildSchema(`
         creator: User!
         createdAt: String!
         dueDate: String
+    }
+
+    type Note implements Content {
+        name: String!
+        note: String!
     }
 
     type Project {

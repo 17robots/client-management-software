@@ -25,6 +25,12 @@ const eventSchema = new Schema({
         type: Number,
         required: true
     },
+    content: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Content'
+        }
+    ],
     creator: {
         type: Schema.Types.ObjectId,
         required: true
