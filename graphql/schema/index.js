@@ -9,11 +9,35 @@ module.exports = buildSchema(`
         _id: ID!
     }
 
-    type Role {
+    type Milestone {
         _id: ID!
     }
 
+    type Task {
+        _id: ID!
+        milestone: Milestone
+        creator: User!
+        createdAt: String!
+        title: String!
+        description: String
+    }
+
+    type Event {
+        _id: ID!
+        task: Task!
+        creator: User!
+        createdDate: String!
+        finishedDate: String!
+        summary: String
+        notes: String
+        overrideHours: Double
+    }
+
     type Team {
+        _id: ID!
+    }
+
+    type Role {
         _id: ID!
     }
 
